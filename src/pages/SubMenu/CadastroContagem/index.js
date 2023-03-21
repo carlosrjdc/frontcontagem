@@ -134,6 +134,7 @@ export default function CadastroContagem(props) {
           valor={material}
           setValor={(e) => setMaterial(e.target.value)}
           funcaoBlur={localizarEndereco}
+          tipo={"number"}
         />
       );
       break;
@@ -144,6 +145,7 @@ export default function CadastroContagem(props) {
           valor={lote}
           setValor={(e) => setLote(e.target.value)}
           funcaoBlur={localizarEndereco}
+          tipo={"number"}
         />
       );
       break;
@@ -154,6 +156,7 @@ export default function CadastroContagem(props) {
           valor={quantidade}
           setValor={(e) => setQuantidade(e.target.value)}
           funcaoBlur={localizarEndereco}
+          tipo={"number"}
         />
       );
       break;
