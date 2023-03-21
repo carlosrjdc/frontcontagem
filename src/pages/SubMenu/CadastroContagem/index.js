@@ -182,7 +182,7 @@ export default function CadastroContagem(props) {
 
   return (
     <div>
-      <div>{input}</div>
+      <div style={{ padding: "4%", marginTop: "5%" }}>{input}</div>
       <div
         style={{
           marginTop: "4%",

@@ -25,21 +25,23 @@ export default function FormAutenticar() {
   }
 
   return (
-    <div className="ContainerFormAuth">
+    <div>
       LOGIN
-      <TextoInput
-        label={"Usuario"}
-        valor={matricula}
-        setValor={(e) => setMatricula(e.target.value)}
-      />
-      <TextoInput
-        label={"Senha"}
-        valor={senha}
-        setValor={(e) => setSenha(e.target.value)}
-      />
-      <Button onClick={Autenticar} variant="contained" size="large">
-        Large
-      </Button>
+      <div>
+        <TextoInput
+          label={"Usuario"}
+          valor={matricula}
+          setValor={(e) => setMatricula(e.target.value)}
+        />
+        <TextoInput
+          label={"Senha"}
+          valor={senha}
+          setValor={(e) => setSenha(e.target.value)}
+        />
+        <Button onClick={Autenticar} variant="contained" size="large">
+          Login
+        </Button>
+      </div>
     </div>
   );
 }
