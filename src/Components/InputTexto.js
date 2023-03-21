@@ -13,8 +13,7 @@ export default function TextoInput(props) {
         onChange={props.setValor}
         onBlur={props.funcaoBlur}
         type={props.tipo}
-        autoFocus={true}
-        ref={props.referencia}
+        autoFocus={props.focar}
       />
     </div>
   );

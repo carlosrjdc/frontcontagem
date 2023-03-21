@@ -22,8 +22,6 @@ export default function CadastroContagem(props) {
   const [idEndereco, setIdEndereco] = useState("");
   const [descSku, setDescSku] = useState("");
 
-  const focarTexto = useRef();
-
   const { data } = props;
 
   async function localizarEndereco() {
@@ -45,7 +43,6 @@ export default function CadastroContagem(props) {
           setDescSku(response.data[0].Descricao);
           setEtapa(etapa + 1);
           setSkuEncontrado("");
-          focarTexto.current.focus();
         } else {
           setSkuEncontrado("Material não localizado");
         }
@@ -54,53 +51,59 @@ export default function CadastroContagem(props) {
       if (lote.length > 6) {
         setEtapa(etapa + 1);
         setLoteInvalido("");
-        focarTexto.current.focus();
       } else {
         setLoteInvalido("O Mininimo de caracteres são 6");
       }
     } else if (etapa === 3) {
-      focarTexto.current.focus();
-      if (quantidade.length > 0) {
+      if (quantidade.length < 1) {
+      } else {
         setEtapa(etapa + 1);
         setQuantidadeVazia("");
-      } else {
-        setQuantidadeVazia("Informar, Pelo menos um número");
       }
     } else if (etapa === 4) {
-      Axios.put(`/atualizarcontagem/${idEndereco}`, {
-        materialId: idSku,
-        Quantidade: quantidade,
-        Lote: lote,
-        UnidadMedida: "cx",
-      })
-        .then((response) => {
-          props.setarValor(data.filter((filtrar) => filtrar.id !== idEndereco));
-          setEtapa(0);
-          setMaterial("");
-          setLote("");
-          setEndereco("");
-          setQuantidade("");
-          setEnderecoEncontrado("");
-          setSkuEncontrado("");
-          setLoteInvalido("");
-          setQuantidadeVazia("");
-          setIdSku("");
-          setDescSku("");
-          Store.addNotification({
-            title: "Sucesso!",
-            message: "Registro realizado com sucesso",
-            type: "success",
-            insert: "top",
-            container: "bottom-center",
-            animationIn: ["animate__animated", "animate__fadeIn"],
-            animationOut: ["animate__animated", "animate__fadeOut"],
-            dismiss: {
-              duration: 5000,
-              onScreen: true,
-            },
-          });
+      if (quantidade.length > 0) {
+        Axios.put(`/atualizarcontagem/${idEndereco}`, {
+          materialId: idSku,
+          Quantidade: quantidade,
+          Lote: lote,
+          UnidadMedida: "cx",
         })
-        .catch((erro) => console.log(erro));
+          .then((response) => {
+            props.setarValor(
+              data.filter((filtrar) => filtrar.id !== idEndereco)
+            );
+            setEtapa(0);
+            setMaterial("");
+            setLote("");
+            setEndereco("");
+            setQuantidade("");
+            setEnderecoEncontrado("");
+            setSkuEncontrado("");
+            setLoteInvalido("");
+            setQuantidadeVazia("");
+            setIdSku("");
+            setDescSku("");
+            Store.addNotification({
+              title: "Sucesso!",
+              message: "Registro realizado com sucesso",
+              type: "success",
+              insert: "top",
+              container: "bottom-center",
+              animationIn: ["animate__animated", "animate__fadeIn"],
+              animationOut: ["animate__animated", "animate__fadeOut"],
+              dismiss: {
+                duration: 5000,
+                onScreen: true,
+              },
+            });
+          })
+          .catch((erro) => console.log(erro));
+      } else {
+        setQuantidadeVazia(
+          "Favor prenche quantidade, caso não tenha nada digite 0"
+        );
+        setEtapa(3);
+      }
     }
   }
 
@@ -128,6 +131,7 @@ export default function CadastroContagem(props) {
           valor={endereco}
           setValor={(e) => setEndereco(e.target.value)}
           funcaoBlur={localizarEndereco}
+          focar={true}
         />
       );
       break;
@@ -140,7 +144,7 @@ export default function CadastroContagem(props) {
             setValor={(e) => setMaterial(e.target.value)}
             funcaoBlur={localizarEndereco}
             tipo={"number"}
-            referencia={focarTexto}
+            focar={true}
           />
         </div>
       );
@@ -153,20 +157,25 @@ export default function CadastroContagem(props) {
           setValor={(e) => setLote(e.target.value)}
           funcaoBlur={localizarEndereco}
           tipo={"number"}
-          referencia={focarTexto}
+          focar={true}
         />
       );
       break;
     case 3:
       input = (
-        <TextoInput
-          label={"Quantidade"}
-          valor={quantidade}
-          setValor={(e) => setQuantidade(e.target.value)}
-          funcaoBlur={localizarEndereco}
-          tipo={"number"}
-          referencia={focarTexto}
-        />
+        <div>
+          <TextoInput
+            label={"Quantidade"}
+            valor={quantidade}
+            setValor={(e) => setQuantidade(e.target.value)}
+            funcaoBlur={localizarEndereco}
+            tipo={"number"}
+            focar={true}
+          />
+          <div style={{ with: "1px" }}>
+            <input style={{ width: "0.1%", border: "0px solid " }}></input>
+          </div>
+        </div>
       );
       break;
     case 4:
