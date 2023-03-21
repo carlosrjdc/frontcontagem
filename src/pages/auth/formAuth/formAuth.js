@@ -25,18 +25,21 @@ export default function FormAutenticar() {
   }
 
   return (
-    <div>
+    <div style={{ padding: "2%", marginTop: "15%" }}>
       LOGIN
       <div>
-        <TextoInput
-          label={"Usuario"}
-          valor={matricula}
-          setValor={(e) => setMatricula(e.target.value)}
-        />
+        <div style={{ marginBottom: "6%" }}>
+          <TextoInput
+            label={"Usuario"}
+            valor={matricula}
+            setValor={(e) => setMatricula(e.target.value)}
+          />
+        </div>
         <TextoInput
           label={"Senha"}
           valor={senha}
           setValor={(e) => setSenha(e.target.value)}
+          tipo={"password"}
         />
         <Button onClick={Autenticar} variant="contained" size="large">
           Login

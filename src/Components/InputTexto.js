@@ -12,6 +12,7 @@ export default function TextoInput(props) {
         value={props.valor}
         onChange={props.setValor}
         onBlur={props.funcaoBlur}
+        type={props.tipo}
       />
     </div>
   );
