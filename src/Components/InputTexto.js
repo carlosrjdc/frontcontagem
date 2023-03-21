@@ -14,6 +14,7 @@ export default function TextoInput(props) {
         onBlur={props.funcaoBlur}
         type={props.tipo}
         autoFocus={props.focar}
+        onKeyDown={props.funcaoBlur}
       />
     </div>
   );
