@@ -10,9 +10,13 @@ export default function ContagemConcluir(props) {
       }}
     >
       <div>{props.enderecos}</div>
+      <br></br>
       <div>{props.itens}</div>
+      <br></br>
       <div>{props.nomesku}</div>
+      <br></br>
       <div>{props.lotes}</div>
+      <br></br>
       <div>{props.quantidades}</div>
     </div>
   );
