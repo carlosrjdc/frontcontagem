@@ -87,7 +87,7 @@ export default function CadastroContagem(props) {
             message: "Registro realizado com sucesso",
             type: "success",
             insert: "top",
-            container: "top-right",
+            container: "bottom-center",
             animationIn: ["animate__animated", "animate__fadeIn"],
             animationOut: ["animate__animated", "animate__fadeOut"],
             dismiss: {
