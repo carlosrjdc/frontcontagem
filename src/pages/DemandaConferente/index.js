@@ -56,7 +56,7 @@ export default function DemandaConferente() {
               setIdentificador(item.id);
               item.Status === "Não iniciado"
                 ? setVer(true)
-                : navigate("/submenu", { state: { dados: identificador } });
+                : navigate("/submenu", { state: { dados: item.id } });
               //navigate("/submenu", { state: { dados: item.id } });
             }}
           >

@@ -10,7 +10,6 @@ import { useRef, useState, useEffect } from "react";
 import CadastroContagem from "./CadastroContagem";
 import ListaDemanda from "./ListaDemanda";
 import Axios from "../../API/config";
-import StepperCadastro from "./StepperCadastro";
 
 export default function SubMenuContagem() {
   const [value, setValue] = useState(0);
@@ -20,8 +19,18 @@ export default function SubMenuContagem() {
 
   let dadosId = location.state.dados;
   var verid = sessionStorage.getItem("id");
+  console.log(dadosId);
 
   const [dados, setDados] = useState([]);
+
+  async function FinalizarContagem() {
+    Axios.put(`/atualizardemanda/${dadosId}`, {
+      Status: "Finalizado",
+      Finalizado: new Date(),
+    })
+      .then(console.log("ok"))
+      .catch((erro) => console.log(erro));
+  }
 
   useEffect(() => {
     if (verid) {
@@ -36,7 +45,11 @@ export default function SubMenuContagem() {
   return (
     <div>
       {value === 0 ? (
-        <CadastroContagem data={dados} setarValor={setDados} />
+        <CadastroContagem
+          finalizar={FinalizarContagem}
+          data={dados}
+          setarValor={setDados}
+        />
       ) : (
         <ListaDemanda data={dados} />
       )}

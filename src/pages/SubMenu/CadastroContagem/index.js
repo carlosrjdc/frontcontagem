@@ -22,7 +22,7 @@ export default function CadastroContagem(props) {
   const [idEndereco, setIdEndereco] = useState("");
   const [descSku, setDescSku] = useState("");
 
-  const { data } = props;
+  const { data, finalizar } = props;
 
   async function localizarEndereco() {
     if (etapa === 0) {
@@ -249,7 +249,7 @@ export default function CadastroContagem(props) {
         <div style={{ marginTop: "5%" }}>
           <Button
             disabled={data.length > 0}
-            onClick={localizarEndereco}
+            onClick={finalizar}
             variant="contained"
             size="large"
           >
