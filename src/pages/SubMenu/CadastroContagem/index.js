@@ -130,7 +130,11 @@ export default function CadastroContagem(props) {
           label={"Endereço"}
           valor={endereco}
           setValor={(e) => setEndereco(e.target.value)}
-          funcaoBlur={localizarEndereco}
+          funcaoBlur={(e) => {
+            if (e.key === "Enter") {
+              localizarEndereco();
+            }
+          }}
           focar={true}
         />
       );
@@ -142,7 +146,11 @@ export default function CadastroContagem(props) {
             label={"Produto"}
             valor={material}
             setValor={(e) => setMaterial(e.target.value)}
-            funcaoBlur={localizarEndereco}
+            funcaoBlur={(e) => {
+              if (e.key === "Enter") {
+                localizarEndereco();
+              }
+            }}
             tipo={"number"}
             focar={true}
           />
@@ -155,7 +163,11 @@ export default function CadastroContagem(props) {
           label={"Lote"}
           valor={lote}
           setValor={(e) => setLote(e.target.value)}
-          funcaoBlur={localizarEndereco}
+          funcaoBlur={(e) => {
+            if (e.key === "Enter") {
+              localizarEndereco();
+            }
+          }}
           tipo={"number"}
           focar={true}
         />
@@ -164,17 +176,24 @@ export default function CadastroContagem(props) {
     case 3:
       input = (
         <div>
+          <div style={{ with: "1px" }}>
+            <input
+              disabled={true}
+              style={{ width: "0.1%", border: "0px solid " }}
+            ></input>
+          </div>
           <TextoInput
             label={"Quantidade"}
             valor={quantidade}
             setValor={(e) => setQuantidade(e.target.value)}
-            funcaoBlur={localizarEndereco}
+            funcaoBlur={(e) => {
+              if (e.key === "Enter") {
+                localizarEndereco();
+              }
+            }}
             tipo={"number"}
             focar={true}
           />
-          <div style={{ with: "1px" }}>
-            <input style={{ width: "0.1%", border: "0px solid " }}></input>
-          </div>
         </div>
       );
       break;
