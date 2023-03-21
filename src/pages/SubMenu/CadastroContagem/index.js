@@ -237,9 +237,25 @@ export default function CadastroContagem(props) {
         {quantidadeVazia}
       </div>
       <div style={{ textAlign: "center", marginTop: "15%" }}>
+        <div style={{ padding: "2%", marginBottom: "5%  " }}>
+          Pendente contagem: <br></br>
+          {data.length}
+        </div>
         <Button onClick={localizarEndereco} variant="contained" size="large">
           {etapa === 4 ? "Finalizar" : "Proximo"}
         </Button>
+        <br></br>
+        <br></br>
+        <div style={{ marginTop: "5%" }}>
+          <Button
+            disabled={data.length > 0}
+            onClick={localizarEndereco}
+            variant="contained"
+            size="large"
+          >
+            Finalizar Contagem
+          </Button>
+        </div>
 
         <div style={{ marginTop: "60%" }}>
           <StepperCadastro verEtapa={etapa} />

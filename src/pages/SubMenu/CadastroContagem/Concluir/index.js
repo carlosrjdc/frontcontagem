@@ -9,15 +9,15 @@ export default function ContagemConcluir(props) {
         fontSize: "16px",
       }}
     >
-      <div>{props.enderecos}</div>
+      <div>Endereço: {props.enderecos}</div>
       <br></br>
-      <div>{props.itens}</div>
+      <div>Item: {props.itens}</div>
       <br></br>
-      <div>{props.nomesku}</div>
+      <div>Descrição: {props.nomesku}</div>
       <br></br>
-      <div>{props.lotes}</div>
+      <div>Lote: {props.lotes}</div>
       <br></br>
-      <div>{props.quantidades}</div>
+      <div>Quantidade: {props.quantidades}</div>
     </div>
   );
 }
