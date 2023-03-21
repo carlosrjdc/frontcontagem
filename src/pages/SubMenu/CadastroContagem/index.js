@@ -1,5 +1,6 @@
 import Button from "@mui/material/Button";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import TextField from "@mui/material/TextField";
 import Axios from "../../../API/config.js";
 import TextoInput from "../../../Components/InputTexto.js";
 import StepperCadastro from "../StepperCadastro/index.js";
@@ -20,6 +21,8 @@ export default function CadastroContagem(props) {
   const [idSku, setIdSku] = useState("");
   const [idEndereco, setIdEndereco] = useState("");
   const [descSku, setDescSku] = useState("");
+
+  const focarTexto = useRef();
 
   const { data } = props;
 
@@ -42,6 +45,7 @@ export default function CadastroContagem(props) {
           setDescSku(response.data[0].Descricao);
           setEtapa(etapa + 1);
           setSkuEncontrado("");
+          focarTexto.current.focus();
         } else {
           setSkuEncontrado("Material não localizado");
         }
@@ -50,17 +54,17 @@ export default function CadastroContagem(props) {
       if (lote.length > 6) {
         setEtapa(etapa + 1);
         setLoteInvalido("");
+        focarTexto.current.focus();
       } else {
         setLoteInvalido("O Mininimo de caracteres são 6");
       }
     } else if (etapa === 3) {
+      focarTexto.current.focus();
       if (quantidade.length > 0) {
         setEtapa(etapa + 1);
         setQuantidadeVazia("");
       } else {
-        setQuantidadeVazia(
-          "Favor informar uma quantidade 'Se estiver vazio informar 0'"
-        );
+        setQuantidadeVazia("Informar, Pelo menos um número");
       }
     } else if (etapa === 4) {
       Axios.put(`/atualizarcontagem/${idEndereco}`, {
@@ -129,13 +133,16 @@ export default function CadastroContagem(props) {
       break;
     case 1:
       input = (
-        <TextoInput
-          label={"Produto"}
-          valor={material}
-          setValor={(e) => setMaterial(e.target.value)}
-          funcaoBlur={localizarEndereco}
-          tipo={"number"}
-        />
+        <div>
+          <TextoInput
+            label={"Produto"}
+            valor={material}
+            setValor={(e) => setMaterial(e.target.value)}
+            funcaoBlur={localizarEndereco}
+            tipo={"number"}
+            referencia={focarTexto}
+          />
+        </div>
       );
       break;
     case 2:
@@ -146,6 +153,7 @@ export default function CadastroContagem(props) {
           setValor={(e) => setLote(e.target.value)}
           funcaoBlur={localizarEndereco}
           tipo={"number"}
+          referencia={focarTexto}
         />
       );
       break;
@@ -157,6 +165,7 @@ export default function CadastroContagem(props) {
           setValor={(e) => setQuantidade(e.target.value)}
           funcaoBlur={localizarEndereco}
           tipo={"number"}
+          referencia={focarTexto}
         />
       );
       break;
