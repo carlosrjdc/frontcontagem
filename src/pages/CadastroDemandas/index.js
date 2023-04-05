@@ -17,13 +17,13 @@ export default function CadastroDemanda() {
   const { idDemandaInventario } = useContext(GlobalContext);
 
   async function buscarDemandasPorId() {
-    Axios.get(`/demandaporid/${idDemandaInventario}`).then((response) => {
+    await Axios.get(`/demandaporid/${idDemandaInventario}`).then((response) => {
       setDadosDemandaID(response.data);
     });
   }
 
   async function buscarUsuarios() {
-    Axios.get(`/usuarios`).then((response) => {
+    await Axios.get(`/usuarios`).then((response) => {
       setUsuarios(response.data);
     });
   }
@@ -42,7 +42,7 @@ export default function CadastroDemanda() {
   };
 
   async function cadastrarNovaDemanda() {
-    Axios.post(`/newdemanda`, {
+    await Axios.post(`/newdemanda`, {
       conferenteId: dadosUsuario.id,
       inventarioDemandaId: idDemandaInventario,
       Data: moment(new Date()).format("YYYY-MM-DD"),
