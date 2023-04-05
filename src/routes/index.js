@@ -5,14 +5,14 @@ import {
   Link,
 } from "react-router-dom";
 import Autenticacao from "../pages/auth";
-import Contagem from "../pages/Contagem";
-import DemandaConferente from "../pages/DemandaConferente";
-import SubMenuContagem from "../pages/SubMenu";
+import CadastroDemanda from "../pages/CadastroDemandas";
+import CadastrarInventario from "../pages/CadastroInventario";
+import ResultadoContagem from "../pages/ResultadoContagem";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Autenticacao />,
+    element: <CadastrarInventario />,
   },
 
   {
@@ -20,16 +20,16 @@ const router = createBrowserRouter([
     element: <Autenticacao />,
   },
   {
-    path: "/demandaconferente",
-    element: <DemandaConferente />,
+    path: "/cadastro",
+    element: <CadastroDemanda />,
   },
   {
-    path: "/contagem",
-    element: <Contagem />,
+    path: "/cadastroinventario",
+    element: <CadastrarInventario />,
   },
   {
-    path: "/submenu",
-    element: <SubMenuContagem />,
+    path: "/resultadocontagem",
+    element: <ResultadoContagem />,
   },
 ]);
 
