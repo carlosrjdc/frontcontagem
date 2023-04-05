@@ -26,7 +26,7 @@ export default function CadastrarInventario() {
   const navigate = useNavigate();
 
   async function AtualizardadosInventario() {
-    Axios.get("/inventariosemaberto").then((response) =>
+    await Axios.get("/inventariosemaberto").then((response) =>
       setDadosInventario(response.data)
     );
   }
@@ -36,7 +36,7 @@ export default function CadastrarInventario() {
   }, []);
 
   async function CadastrarInventario() {
-    Axios.post("/newinventario", {
+    await Axios.post("/newinventario", {
       registradoPor: 1,
       Data: moment(new Date()).format("YYYY-MM-DD"),
       Tipo: tipoInventario,

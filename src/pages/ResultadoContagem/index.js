@@ -16,7 +16,7 @@ export default function ResultadoContagem() {
   const [dadosContagem, setDadosContagem] = useState([]);
 
   async function AtualizarContagem() {
-    Axios.get(`/listarcontagempordemanda/${idDemandaInventario}`).then(
+    await Axios.get(`/listarcontagempordemanda/${idDemandaInventario}`).then(
       (response) => {
         setDadosContagem(response.data);
       }
