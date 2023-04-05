@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     element: <Autenticacao />,
   },
   {
-    path: "/cadastro",
+    path: "/listainventario",
     element: <CadastroDemanda />,
   },
   {

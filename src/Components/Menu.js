@@ -7,11 +7,9 @@ function MenuPrincipal() {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Contagem</Navbar.Brand>
+          <Navbar.Brand href="home">Contagem</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#inventario">Inventarios</Nav.Link>
-            <Nav.Link href="#cadastrodemanda">Cadastro demanda</Nav.Link>
-            <Nav.Link href="#sair">Sair</Nav.Link>
+            <Nav.Link href="listainventario">Inventarios</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

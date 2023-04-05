@@ -15,16 +15,16 @@ export default function ResultadoContagem() {
   const { idDemandaInventario } = useContext(GlobalContext);
   const [dadosContagem, setDadosContagem] = useState([]);
 
-  async function BaixarContagem() {
-    Axios.get(`/excel/${"36"}`).then((response) => console.log(response.data));
-  }
-
-  useEffect(() => {
+  async function AtualizarContagem() {
     Axios.get(`/listarcontagempordemanda/${idDemandaInventario}`).then(
       (response) => {
         setDadosContagem(response.data);
       }
     );
+  }
+
+  useEffect(() => {
+    AtualizarContagem();
   }, []);
 
   return (
@@ -38,12 +38,27 @@ export default function ResultadoContagem() {
             margin: "0.5%",
             lefet: 0,
             display: "block",
-            marginLeft: "87%",
+            marginLeft: "80%",
           }}
         >
-          <Button type="submit" variant="secondary" size="sm">
-            Baixar Contagem
-          </Button>
+          <div style={{ display: "flex" }}>
+            <Button
+              style={{ margin: "1%" }}
+              onClick={AtualizarContagem}
+              variant="secondary"
+              size="sm"
+            >
+              Atualizar Contagem
+            </Button>
+            <Button
+              style={{ margin: "1%" }}
+              type="submit"
+              variant="secondary"
+              size="sm"
+            >
+              Baixar Contagem
+            </Button>
+          </div>
         </div>
       </Form>
       <TableContainer component={Paper}>
