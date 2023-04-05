@@ -30,7 +30,7 @@ export default function ResultadoContagem() {
   return (
     <div>
       <Form
-        action={`http://localhost:4000/excel/${idDemandaInventario}`}
+        action={`https://backcontagem.vercel.app/excel/${idDemandaInventario}`}
         method="GET"
       >
         <div
