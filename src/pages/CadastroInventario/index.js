@@ -109,7 +109,7 @@ export default function CadastrarInventario() {
                       align="center"
                       onClick={() => {
                         setIdDemandaInventario(row.id);
-                        navigate("/cadastro");
+                        navigate("/listainventario");
                       }}
                     >
                       <HiOutlineViewGridAdd
