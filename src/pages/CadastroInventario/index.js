@@ -43,7 +43,7 @@ export default function CadastrarInventario() {
     }).then((response) => {
       setIdDemandaInventario(response.data.id);
       AtualizardadosInventario();
-      navigate("/cadastro");
+      navigate("/listainventario");
     });
   }
 
